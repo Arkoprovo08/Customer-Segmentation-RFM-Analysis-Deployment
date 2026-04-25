@@ -1,22 +1,65 @@
-# Customer Segmentation Engine (RFM + Machine Learning + Deployment)
+# Customer Segmentation Platform with RFM Analysis, Machine Learning, and Cloud Deployment
 
 ## Overview
 
-This project builds an end-to-end customer segmentation system using RFM (Recency, Frequency, Monetary) analysis and K-Means clustering.
+This project implements an end-to-end customer segmentation platform using RFM (Recency, Frequency, Monetary) analysis and K-Means clustering. It identifies and categorizes customers based on purchasing behavior to support data-driven business decisions.
 
-The solution is deployed as a REST API using FastAPI, containerized with Docker, and hosted on AWS EC2 for real-time predictions.
+The system generates actionable segments such as High Value, Regular, At Risk, Potential High Value, and Lost High Value. These insights can be used for targeted marketing, customer retention, and revenue optimization.
+
+The solution is productionized by exposing the segmentation logic through a FastAPI-based REST API, containerized using Docker, and deployed on AWS EC2 for real-time predictions.
 
 ---
 
 ## Problem Statement
 
-Businesses often struggle to identify:
+Businesses often face challenges in:
 
-* High-value customers
-* At-risk customers
-* Potential loyal customers
+* Identifying high-value customers
+* Detecting customers at risk of churn
+* Recognizing potential loyal customers
 
-This project addresses the problem by segmenting customers based on purchasing behavior.
+This project addresses these challenges through behavioral segmentation using transactional data.
+
+---
+
+## Architecture
+
+The system follows a modular, production-oriented architecture:
+
+Client Request (User / API Consumer)
+↓
+FastAPI Application Layer (app.py)
+↓
+Model Layer (model.py)
+↓
+Preprocessing Pipeline
+
+* Log Transformation
+* Feature Scaling (StandardScaler)
+  ↓
+  Clustering Model (K-Means)
+  ↓
+  Business Rules Engine
+* Quantile-based refinement
+* Segment reassignment logic
+  ↓
+  Response (Customer Segment Output)
+  ↓
+  Docker Container Runtime
+  ↓
+  AWS EC2 Instance (Cloud Hosting)
+
+---
+
+## System Description
+
+* The FastAPI layer handles incoming requests and input validation.
+* The model layer processes data using pre-trained artifacts (scaler, clustering model, quantiles).
+* The K-Means model assigns initial clusters based on RFM features.
+* A business rules engine refines clusters using quantile thresholds to improve interpretability.
+* The final customer segment is returned as a JSON response.
+* Docker ensures consistent execution across environments.
+* AWS EC2 hosts the application for public access.
 
 ---
 
@@ -51,16 +94,6 @@ Segmentation refined using quantile-based rules:
 
 ---
 
-## Architecture
-
-User → FastAPI → Model → Segmentation Logic → Response
-↓
-Docker
-↓
-AWS EC2
-
----
-
 ## Tech Stack
 
 * Python
@@ -68,6 +101,27 @@ AWS EC2
 * FastAPI
 * Docker
 * AWS EC2
+
+---
+
+## Project Structure
+
+```
+Customer-Segmentation-RFM-Analysis-Deployment/
+│
+├── app.py
+├── model.py
+├── config.py
+├── requirements.txt
+├── Dockerfile
+├── README.md
+├── .gitignore
+│
+├── artifacts/
+│   ├── scaler.pkl
+│   ├── kmeans.pkl
+│   ├── quantiles.pkl
+```
 
 ---
 
