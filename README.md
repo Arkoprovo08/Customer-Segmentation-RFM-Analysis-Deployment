@@ -26,28 +26,12 @@ This project addresses these challenges through behavioral segmentation using tr
 
 The system follows a modular, production-oriented architecture:
 
-Client Request (User / API Consumer)
-↓
-FastAPI Application Layer (app.py)
-↓
-Model Layer (model.py)
-↓
-Preprocessing Pipeline
+Client Request (User / API Consumer)→ FastAPI Application Layer (app.py)→ Model Layer (model.py)→ Preprocessing Pipeline
 
 * Log Transformation
-* Feature Scaling (StandardScaler)
-  ↓
-  Clustering Model (K-Means)
-  ↓
-  Business Rules Engine
+* Feature Scaling (StandardScaler)→ Clustering Model (K-Means)→  Business Rules Engine
 * Quantile-based refinement
-* Segment reassignment logic
-  ↓
-  Response (Customer Segment Output)
-  ↓
-  Docker Container Runtime
-  ↓
-  AWS EC2 Instance (Cloud Hosting)
+* Segment reassignment logic→ Response (Customer Segment Output)→ Docker Container Runtime→ AWS EC2 Instance (Cloud Hosting)
 
 ---
 
