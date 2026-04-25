@@ -1,4 +1,4 @@
-# Customer Segmentation Platform with RFM Analysis, Machine Learning, and Cloud Deployment
+# Customer Segmentation Platform with RFM Analysis, Machine Learning and Cloud Deployment
 
 ## Overview
 
